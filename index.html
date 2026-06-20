@@ -15,15 +15,12 @@
   --coral:#FF5C3A;
   --purple:#7B5EA7;
   --gold:#FFB703;
-  --gold-dark:#B97C1F;
   --border:#E0E0E0;
   --surface:#F2F2F2;
-  --paper:#FFF9F0;
-  --plum:#231440;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',system-ui,sans-serif;background:linear-gradient(180deg,#fffaf2 0%,#FAFAFA 42%);color:var(--ink);line-height:1.6}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
 
 /* NAV */
 nav{padding:18px 5vw;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);background:#fff;position:sticky;top:0;z-index:100}
@@ -67,87 +64,38 @@ nav{padding:18px 5vw;display:flex;justify-content:space-between;align-items:cent
 .cta-btn:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(255,92,58,.4)}
 .cta-micro{font-size:13px;color:var(--muted);text-align:center}
 
-/* REAL PRODUCT PREVIEW */
-.product-stack{
-  position:relative;
-  min-height:640px;
-  background:radial-gradient(circle at 72% 12%,rgba(255,183,3,.15),transparent 26%),linear-gradient(160deg,#fff9ef,#f8efe3);
-  border:1px solid rgba(185,124,31,.18);
-  border-radius:28px;
-  overflow:hidden;
-  box-shadow:0 26px 70px rgba(35,20,64,.16);
+/* BOOK MOCKUP */
+.mockup{
+  background:linear-gradient(135deg,#1a0e2e,#2d1e45);
+  border-radius:24px;padding:48px 40px;
+  display:flex;flex-direction:column;gap:14px;
+  box-shadow:0 24px 64px rgba(24,10,46,.3);
+  position:relative;overflow:hidden;
 }
-.product-stack::before{
-  content:'';position:absolute;inset:22px;border:1px solid rgba(185,124,31,.14);border-radius:22px;pointer-events:none;
+.mockup::before{
+  content:'';position:absolute;top:-40px;right:-40px;
+  width:180px;height:180px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,183,3,.18),transparent);
 }
-.product-image{
-  position:absolute;
-  display:block;
-  width:38%;
-  border-radius:14px;
-  border:1px solid rgba(80,62,47,.16);
-  box-shadow:0 22px 42px rgba(35,20,64,.22);
-  background:#fff;
+.mockup-title{font-family:'Playfair Display',serif;font-size:32px;color:#fff;line-height:1.1}
+.mockup-title span{display:block;margin-top:8px;font-size:24px;color:#FFB703}
+.mockup-sub{font-size:14px;color:#c9b8e8;margin-top:4px}
+.mockup-tags{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0}
+.mockup-tag{
+  font-size:11px;font-weight:600;padding:6px 12px;border-radius:999px;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:#fff;
+  letter-spacing:.05em;text-align:center;
 }
-.product-image.cover{width:44%;left:8%;bottom:10%;z-index:4}
-.product-image.pattern{right:10%;top:13%;z-index:3;transform:rotate(6deg)}
-.product-image.ignition{right:24%;top:24%;z-index:2;transform:rotate(-8deg)}
-.product-image.reset{right:7%;bottom:14%;z-index:1;transform:rotate(9deg)}
-.stack-badge{
-  position:absolute;top:28px;left:32px;z-index:5;
-  background:var(--gold-dark);color:#fff;border-radius:999px;
-  padding:9px 18px;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
-  box-shadow:0 10px 24px rgba(185,124,31,.28);
-}
-.stack-note{
-  position:absolute;left:32px;right:32px;bottom:28px;z-index:5;
-  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
-}
-.stack-note span{
-  background:rgba(255,255,255,.88);border:1px solid rgba(185,124,31,.18);
-  border-radius:12px;padding:10px 12px;font-size:12px;font-weight:700;color:var(--plum);text-align:center;
-}
+.mockup-divider{height:1px;background:rgba(255,255,255,.12)}
+.mockup-includes{color:#e8d5ff;font-size:14px}
+.mockup-includes li{padding:6px 0;border-bottom:1px solid rgba(255,255,255,.07);display:flex;gap:10px}
+.mockup-includes li:last-child{border-bottom:none}
+.mockup-includes span{width:22px;flex-shrink:0}
 /* SECTIONS */
 section{padding:80px 5vw;max-width:1200px;margin:0 auto}
 .section-label{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--purple);margin-bottom:12px}
 .section-head{font-family:'Playfair Display',serif;font-size:42px;line-height:1.1;margin-bottom:16px}
 .section-sub{font-size:18px;color:var(--muted);max-width:640px;margin-bottom:40px}
-
-/* LOOK INSIDE */
-.look-inside{
-  background:linear-gradient(160deg,#fff9f0,#fbf4ea);
-  border-radius:28px;max-width:none;padding:80px 5vw;
-  border-top:1px solid rgba(185,124,31,.14);
-  border-bottom:1px solid rgba(185,124,31,.14);
-}
-.look-inside-inner{max-width:1200px;margin:0 auto}
-.preview-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px;align-items:start}
-.preview-card{
-  background:#fff;border:1px solid rgba(185,124,31,.18);border-radius:18px;
-  padding:14px;box-shadow:0 12px 28px rgba(35,20,64,.08);
-}
-.preview-card img{width:100%;display:block;border-radius:12px;border:1px solid rgba(0,0,0,.08);background:#fff}
-.preview-card strong{display:block;margin-top:12px;font-size:14px;color:var(--plum)}
-.preview-card p{font-size:13px;color:var(--muted);line-height:1.5;margin-top:4px}
-
-/* BUNDLE VALUE */
-.bundle-system{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:34px}
-.bundle-card{
-  position:relative;background:#fff;border:1px solid rgba(185,124,31,.2);border-radius:20px;
-  padding:20px 20px 24px;box-shadow:0 14px 32px rgba(35,20,64,.08);overflow:hidden;
-}
-.bundle-tag{
-  display:inline-flex;align-items:center;justify-content:center;
-  background:#f1d19c;color:#1e1628;border-radius:999px;
-  padding:8px 18px;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
-  margin-bottom:14px;
-}
-.bundle-card h3{font-family:'Playfair Display',serif;font-size:28px;color:var(--plum);line-height:1.08;margin-bottom:8px}
-.bundle-card p{font-size:14px;color:var(--muted);line-height:1.55;margin-bottom:18px}
-.bundle-images{position:relative;min-height:300px}
-.bundle-images img{position:absolute;width:50%;border-radius:12px;border:1px solid rgba(80,62,47,.14);box-shadow:0 16px 28px rgba(35,20,64,.16);background:#fff}
-.bundle-images img:first-child{left:0;top:16px;z-index:2}
-.bundle-images img:last-child{right:0;top:0;z-index:1;transform:rotate(5deg)}
 
 /* PAIN GRID */
 .pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
@@ -222,20 +170,9 @@ footer a:hover{color:var(--ink)}
 @media(max-width:900px){
   .hero{grid-template-columns:1fr;padding:48px 5vw;min-height:auto;gap:40px}
   .hero h1{font-size:38px}
-  .pain-grid,.get-grid,.testimonials-grid,.bundle-system{grid-template-columns:1fr}
-  .preview-grid{grid-template-columns:1fr 1fr}
-  .product-stack{min-height:520px}
+  .pain-grid,.get-grid,.testimonials-grid{grid-template-columns:1fr}
   section{padding:56px 5vw}
   .final-cta{padding:48px 28px}
-}
-@media(max-width:560px){
-  .preview-grid{grid-template-columns:1fr}
-  .product-stack{min-height:500px}
-  .product-image.cover{width:52%;left:7%;bottom:13%}
-  .product-image.pattern{width:38%;right:8%;top:16%}
-  .product-image.ignition{display:none}
-  .product-image.reset{width:36%;right:8%;bottom:20%}
-  .stack-note{grid-template-columns:1fr;bottom:18px}
 }
 </style>
 </head>
@@ -264,93 +201,31 @@ footer a:hover{color:var(--ink)}
     </div>
   </div>
   <div>
-    <div class="product-stack" aria-label="Preview of the ADHD Playbook bundle pages">
-      <div class="stack-badge">Actual PDF pages</div>
-      <img class="product-image cover" src="assets/workbook-previews/01-cover.webp" alt="Cover page of Playbook for the ADHD Brain">
-      <img class="product-image ignition" src="assets/workbook-previews/13-ignition-starters.webp" alt="My Ignition Starters worksheet preview">
-      <img class="product-image pattern" src="assets/workbook-previews/11-pattern-check.webp" alt="Which ADHD patterns show up most for you worksheet preview">
-      <img class="product-image reset" src="assets/workbook-previews/20-emergency-reset.webp" alt="Emergency Reset page preview">
-      <div class="stack-note">
-        <span>Read</span>
-        <span>Reflect</span>
-        <span>Reset</span>
+    <div class="mockup">
+      <div class="mockup-title">Playbook for the ADHD Brain<span>* The ADHD Pattern Map Workbook</span></div>
+      <div class="mockup-sub">A practical Playbook + Workbook bundle for understanding your ADHD patterns and turning them into action.</div>
+      <div class="mockup-tags">
+        <div class="mockup-tag">Executive dysfunction</div>
+        <div class="mockup-tag">Time paralysis</div>
+        <div class="mockup-tag">Overthinking</div>
+        <div class="mockup-tag">Task completion</div>
+      </div>
+      <div class="mockup-divider"></div>
+      <div class="mockup-includes">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#9b86c2;margin-bottom:10px">What's inside</div>
+        <ul style="list-style:none">
+          <li><span>📖</span>Easy to read, easy to use — in any order that works for you</li>
+          <li><span>🧠</span>Tools that actually make sense for your brain</li>
+          <li><span>🗣️</span>Scripts for the moments you don't know what to say or do</li>
+          <li><span>📅</span>A daily rhythm that doesn't fall apart by Tuesday</li>
+          <li><span>🆘</span>An emergency section for your hardest days</li>
+          <li><span>📝</span>The ADHD Pattern Map Workbook with chapter-by-chapter action pages</li>
+        </ul>
+       <div style="font-size:12px;color:#c9b8e8;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.12)">7 playbook chapters • Pattern Map worksheets • Designed to read and use immediately</div>
       </div>
     </div>
   </div>
 </div>
-
-
-<!-- LOOK INSIDE -->
-<section class="look-inside">
-  <div class="look-inside-inner">
-    <div class="section-label">Look inside</div>
-    <div class="section-head">Real pages from the printable workbook</div>
-    <div class="section-sub">These are screenshots from the actual PDF bundle, so you can see what you are getting before you buy.</div>
-    <div class="preview-grid">
-      <div class="preview-card">
-        <img src="assets/workbook-previews/11-pattern-check.webp" alt="Pattern check worksheet preview">
-        <strong>Pattern check</strong>
-        <p>Find which ADHD patterns are showing up most right now.</p>
-      </div>
-      <div class="preview-card">
-        <img src="assets/workbook-previews/13-ignition-starters.webp" alt="Ignition starters worksheet preview">
-        <strong>Ignition starters</strong>
-        <p>Choose a first move small enough for your brain to start.</p>
-      </div>
-      <div class="preview-card">
-        <img src="assets/workbook-previews/15-brain-dump.webp" alt="Brain dump and parking lot worksheet preview">
-        <strong>Brain dump</strong>
-        <p>Get loops out of your head and onto a page you can trust.</p>
-      </div>
-      <div class="preview-card">
-        <img src="assets/workbook-previews/20-emergency-reset.webp" alt="Emergency reset page preview">
-        <strong>Emergency reset</strong>
-        <p>Use this when the normal tools are too much.</p>
-      </div>
-      <div class="preview-card">
-        <img src="assets/workbook-previews/22-operating-plan.webp" alt="ADHD operating plan page preview">
-        <strong>Operating plan</strong>
-        <p>Build a simple system you can return to when life gets loud.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- BUNDLE VALUE -->
-<section>
-  <div class="section-label">The ADHD Playbook Bundle</div>
-  <div class="section-head">Read, reflect, then reset with real tools</div>
-  <div class="section-sub">The bundle is designed as a practical system: understand what is happening, map your patterns, and keep a reset plan close for harder days.</div>
-  <div class="bundle-system">
-    <div class="bundle-card">
-      <div class="bundle-tag">Read</div>
-      <h3>The Playbook</h3>
-      <p>Seven practical chapters that explain executive dysfunction, time paralysis, overthinking, task completion, rhythm, reset tools, and operating principles.</p>
-      <div class="bundle-images">
-        <img src="assets/workbook-previews/01-cover.webp" alt="Playbook cover preview">
-        <img src="assets/workbook-previews/10-workbook-intro.webp" alt="Workbook companion intro preview">
-      </div>
-    </div>
-    <div class="bundle-card">
-      <div class="bundle-tag">Reflect</div>
-      <h3>Pattern Map Workbook</h3>
-      <p>Actual worksheet pages help you identify your strongest patterns and choose one small action to test.</p>
-      <div class="bundle-images">
-        <img src="assets/workbook-previews/11-pattern-check.webp" alt="Pattern check worksheet preview">
-        <img src="assets/workbook-previews/13-ignition-starters.webp" alt="Ignition starters worksheet preview">
-      </div>
-    </div>
-    <div class="bundle-card">
-      <div class="bundle-tag">Reset</div>
-      <h3>Quick Reference Pages</h3>
-      <p>Keep the emergency reset page and operating plan nearby for the days when your brain needs fewer decisions.</p>
-      <div class="bundle-images">
-        <img src="assets/workbook-previews/20-emergency-reset.webp" alt="Emergency reset page preview">
-        <img src="assets/workbook-previews/22-operating-plan.webp" alt="Operating plan page preview">
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- PAIN POINTS -->
 <section>
